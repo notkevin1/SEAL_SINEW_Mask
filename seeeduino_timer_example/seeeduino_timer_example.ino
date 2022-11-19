@@ -12,6 +12,7 @@ unsigned long freq=40000; // default f=40 kHz
 // Declaration for an SSD1306 display connected to I2C (SDA, SCL pins)
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);
 
+// SQUARE WAVE
 // Output adjustable dual slope PWM on TCC0 with complementary outputs and dead time insertion 
 void setup()
 {
@@ -31,10 +32,10 @@ void setup()
   while (TCC0->SYNCBUSY.bit.WAVE);                // Wait for synchronization
   
   //  PER = 48 MHz / (2*desired_freq)
-  TCC0->PER.reg = (48000000)/(2*freq);            // Set the frequency of the PWM on TCC0 to 300kHz
+  TCC0->PER.reg = (48000000)/(2*freq);            // Set the frequency of the PWM on TCC0 to desired frequency
   while(TCC0->SYNCBUSY.bit.PER);                  // Wait for synchronization
  
-  TCC0->CC[2].reg = (48000000*duty_cycle)/(2*freq);                           // Output a 50% duty-cycle (40=50.6%, 70=88.6%)
+  TCC0->CC[2].reg = (48000000*duty_cycle)/(2*freq);  // Output a 50% duty-cycle
   while(TCC0->SYNCBUSY.bit.CC2);                  // Wait for synchronization
   
   TCC0->CTRLA.bit.ENABLE = 1;                     // Enable TCC0 
