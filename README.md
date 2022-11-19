@@ -10,3 +10,11 @@ git commit -m "message for commit"
 git remote add origin https://github.com/notkevin1/SEAL_SINEW_Mask.git
 git push -u origin main
 ```
+
+## Technical Details for Seeeduino Script:
+- Using the 48 MHz clock of GCLK0 (routed to TCC0)
+  - Each timer counts up to a maximum or TOP value set by the PER register, this determines the frequency of the PWM operation: `Freq = 48MHz/(2*N*PER)`
+  - With N (number of divisions of 48 MHz) set to 1, this becomes `Freq = 48MHz/(2*PER)` or `PER = 48MHz/(2*Freq)`
+  - Set duty cycle by adjusting the CC[n] register, which has a relationship of `CC[2].reg = (48MHz*duty_cycle)/(2*freq)`
+- Output in pin D3
+- Parts of script sourced from [here](https://arduino.stackexchange.com/questions/85741/seeeduino-xiao-write-and-read-pwm-duration-period-using-timers)
