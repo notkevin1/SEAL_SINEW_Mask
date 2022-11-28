@@ -19,4 +19,7 @@ git push -u origin main
 - Output = pin D2 (A3 or B3 on breadboard), GND = pin 2 (J3 on breadboard)
 - Parts of script sourced from [here](https://arduino.stackexchange.com/questions/85741/seeeduino-xiao-write-and-read-pwm-duration-period-using-timers)
 
-![Seeeduino XIAO](https://files.seeedstudio.com/wiki/Seeeduino-XIAO/img/Seeeduino-XIAO-pinout-1.jpg)
+<!-- ![Seeeduino XIAO](https://files.seeedstudio.com/wiki/Seeeduino-XIAO/img/Seeeduino-XIAO-pinout-1.jpg) -->
+### Wiring Diagrams/Schematic
+![Seeeduino_OLED_bb](https://user-images.githubusercontent.com/61093711/204388452-210a88bb-0a57-4c8e-b101-08d35babf533.png)
+![Seeeduino_OLED_schem](https://user-images.githubusercontent.com/61093711/204388557-5cbd2a2c-996b-4661-996f-37a21d34c487.png)
