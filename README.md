@@ -21,5 +21,5 @@ git push -u origin main
 
 <!-- ![Seeeduino XIAO](https://files.seeedstudio.com/wiki/Seeeduino-XIAO/img/Seeeduino-XIAO-pinout-1.jpg) -->
 ### Wiring Diagrams/Schematic
-![Seeeduino_OLED_bb](https://user-images.githubusercontent.com/61093711/204388452-210a88bb-0a57-4c8e-b101-08d35babf533.png)
-![Seeeduino_OLED_schem](https://user-images.githubusercontent.com/61093711/204388557-5cbd2a2c-996b-4661-996f-37a21d34c487.png)
+![Seeeduino_OLED_bb (1)](https://user-images.githubusercontent.com/61093711/205526779-3df1838e-d886-452e-9c88-fbf7f64f901e.png)
+![Seeeduino_OLED_schem (1)](https://user-images.githubusercontent.com/61093711/205526785-302dbbd8-a1d2-492f-8910-1b07e42a27aa.png)
