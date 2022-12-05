@@ -10,3 +10,17 @@ git commit -m "message for commit"
 git remote add origin https://github.com/notkevin1/SEAL_SINEW_Mask.git
 git push -u origin main
 ```
+
+## Technical Details for Seeeduino Script:
+- Using the 48 MHz clock of GCLK0 (routed to TCC0)
+  - Each timer counts up to a maximum or TOP value set by the PER register, this determines the frequency of the PWM operation: `Freq = 48MHz/(2*N*PER)`
+  - With N (number of divisions of 48 MHz) set to 1, this becomes `Freq = 48MHz/(2*PER)` or `PER = 48MHz/(2*Freq)`
+  - Set duty cycle by adjusting the CC[n] register, which has a relationship of `CC[2].reg = (48MHz*duty_cycle)/(2*freq)`
+- Output = pin D2 (A3 or B3 on breadboard), GND = pin 2 (J3 on breadboard)
+- Parts of script sourced from [here](https://arduino.stackexchange.com/questions/85741/seeeduino-xiao-write-and-read-pwm-duration-period-using-timers)
+
+<!-- ![Seeeduino XIAO](https://files.seeedstudio.com/wiki/Seeeduino-XIAO/img/Seeeduino-XIAO-pinout-1.jpg) -->
+### Wiring Diagrams/Schematic
+![Seeeduino_OLED_schem (1)](https://user-images.githubusercontent.com/61093711/205526785-302dbbd8-a1d2-492f-8910-1b07e42a27aa.png)
+![Seeeduino_OLED_bb (1)](https://user-images.githubusercontent.com/61093711/205526779-3df1838e-d886-452e-9c88-fbf7f64f901e.png)
+
