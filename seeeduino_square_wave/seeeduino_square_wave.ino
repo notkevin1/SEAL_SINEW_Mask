@@ -10,7 +10,7 @@
 //unsigned long freq=40000; // default f=40 kHz
 
 // read the input on analog pin 0:
-int freq = analogRead(A7) * 100000 / 1024.0;
+int freq = analogRead(A7) * 50000 / 1024.0;
 // read the input on analog pin 8:
 float duty_cycle = analogRead(A8) / 1024.0;
 
@@ -60,17 +60,21 @@ void setup()
   display.setTextColor(WHITE);
 }
 
+/* 
+ *  Using DAC Pin D0 (PA2) or D2 (PA10). XIAO D0 is PA2, D2 is PA10 (even port thus PMUXE)
+ */
 void wave_generation(int freq, float duty_cycle) {
   GCLK->CLKCTRL.reg = GCLK_CLKCTRL_CLKEN |        // Enable GCLK0
                       GCLK_CLKCTRL_GEN_GCLK0 |    // Select GCLK0 at 48MHz
                       GCLK_CLKCTRL_ID_TCC0_TCC1;  // Route GCLK0 to TCC0 and TCC1
 
-  PORT->Group[PORTA].PINCFG[10].bit.PMUXEN = 1;   // Enable the port multiplexer for port pins PA10 and PA11
-  PORT->Group[PORTA].PINCFG[11].bit.PMUXEN = 1;
+  // Enable the port multiplexer for port pins PA10 and PA11
+  PORT->Group[g_APinDescription[2].ulPort].PINCFG[g_APinDescription[2].ulPin].bit.PMUXEN = 1;
  
   // Select the port pin multiplexer switch to option F for TCC0/WO[2] and TCC0/WO[3] on 
   // port pins PA10 and PA11 respectively
-  PORT->Group[PORTA].PMUX[10 >> 1].reg = PORT_PMUX_PMUXO_F | PORT_PMUX_PMUXE_F;
+//  PORT->Group[PORTA].PMUX[10 >> 1].reg = PORT_PMUX_PMUXO_F | PORT_PMUX_PMUXE_F;
+  PORT->Group[g_APinDescription[2].ulPort].PMUX[g_APinDescription[2].ulPin >> 1].reg = PORT_PMUX_PMUXE_F;// | PORT_PMUX_PMUXE_F; 
   
   TCC0->WAVE.reg = TCC_WAVE_POL2 |                // Reverse the signal polarity on channel 2
                    TCC_WAVE_WAVEGEN_DSBOTTOM;     // Dual slope PWM on TCC0
@@ -89,7 +93,7 @@ void wave_generation(int freq, float duty_cycle) {
 
 void loop() {
   // read the input on analog pin 0:
-  int freq = analogRead(A7) * 100000 / 1024.0;
+  int freq = analogRead(A7) * 50000 / 1024.0;
   // read the input on analog pin 8:
   float duty_cycle = analogRead(A8) / 1024.0;
   
