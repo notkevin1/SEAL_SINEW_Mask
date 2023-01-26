@@ -1,4 +1,4 @@
-# SEAL - SINEW Mask Power Electronics Software
+# SEAL - Plasma Group Power Electronics Software
 
 This repository contains files used in Arduino-based devices which control the power supply parameters such as frequency, duty cycle, and burst ratio. One version is designed for the [Arduino Nano](https://store-usa.arduino.cc/products/arduino-nano/) (non-BLE, non-WiFi), and other for the [Seeed Studio XIAO SAMD21](https://www.seeedstudio.com/Seeeduino-XIAO-Arduino-Microcontroller-SAMD21-Cortex-M0+-p-4426.html).  
 
@@ -24,3 +24,5 @@ git push -u origin main
 ![Seeeduino_OLED_schem (1)](https://user-images.githubusercontent.com/61093711/205526785-302dbbd8-a1d2-492f-8910-1b07e42a27aa.png)
 ![Seeeduino_OLED_bb (1)](https://user-images.githubusercontent.com/61093711/205526779-3df1838e-d886-452e-9c88-fbf7f64f901e.png)
 
+### Example Waveform
+![scope_6](https://user-images.githubusercontent.com/61093711/211942071-3a559696-8df3-46fb-bc6e-bdae4dcd3852.png)
