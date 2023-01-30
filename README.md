@@ -28,5 +28,6 @@ git push -u origin main
 
 ### Example Waveform
 <!-- ![scope_6](https://user-images.githubusercontent.com/61093711/211942071-3a559696-8df3-46fb-bc6e-bdae4dcd3852.png) -->
-![waveform_and_device](https://user-images.githubusercontent.com/61093711/215390417-6af8c080-c85e-4ffd-966b-457b6718e7f5.png)
+![waveform_and_device](https://user-images.githubusercontent.com/61093711/215390581-c39daa24-87d7-4491-8c49-916f191338b3.png)
+
 
