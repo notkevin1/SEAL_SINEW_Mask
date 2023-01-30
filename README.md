@@ -23,6 +23,8 @@ git push -u origin main
 ### Wiring Diagrams/Schematic
 ![Seeeduino_OLED_schem (1)](https://user-images.githubusercontent.com/61093711/205526785-302dbbd8-a1d2-492f-8910-1b07e42a27aa.png)
 ![Seeeduino_OLED_bb (1)](https://user-images.githubusercontent.com/61093711/205526779-3df1838e-d886-452e-9c88-fbf7f64f901e.png)
+![EAGLE Schematic](https://user-images.githubusercontent.com/61093711/215390200-ec9150b1-32ca-4589-85c4-e7f30b0b05b8.png)
+
 
 ### Example Waveform
 ![scope_6](https://user-images.githubusercontent.com/61093711/211942071-3a559696-8df3-46fb-bc6e-bdae4dcd3852.png)
