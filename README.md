@@ -26,8 +26,10 @@ git push -u origin main
 ![seeeduino_schematic](https://user-images.githubusercontent.com/61093711/217952065-acf7c9aa-363b-4d76-bf9a-c653a03f8402.png)
 
 
-### Example Waveform
+### Example Waveform - Continuous Frequency
 <!-- ![scope_6](https://user-images.githubusercontent.com/61093711/211942071-3a559696-8df3-46fb-bc6e-bdae4dcd3852.png) -->
 ![waveform_and_device](https://user-images.githubusercontent.com/61093711/215390581-c39daa24-87d7-4491-8c49-916f191338b3.png)
-
+### Example Waveform - Base Frequency @ 20 kHz (Duty Cycle = 50%), Burst Frequency = 1 kHz (Burst Ratio = 30%)
+![scope_11](https://user-images.githubusercontent.com/61093711/218614993-4ca851db-ea03-4c8f-a74b-ace306ef6b6f.png)
+<img width="842" alt="image" src="https://user-images.githubusercontent.com/61093711/218615347-129ae33b-2ccf-4818-8b12-7658cf702de7.png">
 
