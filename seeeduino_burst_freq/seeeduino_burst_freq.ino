@@ -1,4 +1,15 @@
-// declaration for base frequency, burst frequency, and duty cycle
+#include <Wire.h>
+#include <Adafruit_GFX.h>
+#include <Adafruit_SSD1306.h>
+
+#define SCREEN_WIDTH 128 // OLED display width, in pixels
+#define SCREEN_HEIGHT 64 // OLED display height, in pixels
+#define DAC_PIN A0 // Use built-in DAC in pin 0
+
+// Declaration for an SSD1306 display connected to I2C (SDA, SCL pins)
+Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);
+
+// Declarations for base frequency, burst frequency, and duty cycle
 int base_freq = 20000;
 int burst_freq = 1000;
 int burst_period = (1 / (double) burst_freq)*1000;          // units in microseconds
@@ -8,7 +19,50 @@ int cycles = (int) (burst_period*1000*burst_ratio)/((1/(double)base_freq)*pow(10
 
 // Output a burst of 6 pulses at 20 kHz, 50% duty-cycle on digital pin D2
 void setup() {
-  SerialUSB.begin(115200);
+//  analogReadResolution(10); // Set analog input resolution to max, 12-bits
+//  SerialUSB.begin(115200);
+//
+  if(!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) { // Address 0x3D for 128x64
+    Serial.println(F("SSD1306 allocation failed"));
+    for(;;);
+  }
+//  delay(2000);
+  display.clearDisplay();
+  display.setTextSize(1);
+  display.setTextColor(WHITE);
+
+  display.clearDisplay();
+  display.setTextSize(1);
+  display.setTextColor(WHITE);
+//
+//  //clear display
+//  display.clearDisplay();
+
+  // display frequency
+  display.setTextSize(1);
+  display.setCursor(0,0);
+  display.print("Frequency: ");
+  display.setTextSize(2);
+  display.setCursor(0,10);
+  display.print(base_freq);
+  display.print(" ");
+  display.setTextSize(2);
+  display.print("Hz");
+//  
+  // display duty cycle
+  display.setTextSize(1);
+  display.setCursor(0, 35);
+  display.print("Duty Cycle: ");
+  display.print(" ");
+  display.setTextSize(2);
+  display.setCursor(0, 45);
+  display.print(int(duty_cycle*100));
+  display.print(" ");
+  display.setTextSize(2);
+  display.print("%");
+//  
+  display.display(); 
+  
   GCLK->CLKCTRL.reg = GCLK_CLKCTRL_CLKEN |         // Enable GCLK0
                       GCLK_CLKCTRL_GEN_GCLK0 |     // Select GCLK0 at 48MHz
                       GCLK_CLKCTRL_ID_TCC0_TCC1;   // Route GCLK0 to TCC0 and TCC1

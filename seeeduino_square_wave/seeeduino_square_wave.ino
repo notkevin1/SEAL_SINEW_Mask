@@ -70,7 +70,7 @@ void loop() {
   float duty_cycle = analogRead(A8) / 1024.0;
 //  float duty_cycle = 0.5;
   
-  wave_generation(freq, duty_cycle
+  wave_generation(freq, duty_cycle);
   
   TCC0->CTRLBSET.reg = TCC_CTRLBSET_LUPD;         // Set the Lock Update (LUPD) bit
   while (TCC0->SYNCBUSY.bit.CTRLB);               // Wait for synchroniztion
