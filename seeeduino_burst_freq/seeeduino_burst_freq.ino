@@ -10,58 +10,17 @@
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);
 
 // Declarations for base frequency, burst frequency, and duty cycle
-int base_freq = 20000;
-int burst_freq = 1000;
-int burst_period = (1 / (double) burst_freq)*1000;          // units in microseconds
-float duty_cycle = 0.5;                            // 0.0 to 1.0
-float burst_ratio = 0.3;
+int base_freq = analogRead(A8) * 50000 / 1024.0;
+float duty_cycle = analogRead(A9) / 1024.0;
+int burst_freq = analogRead(A7) * 10000 / 1024.0;
+float burst_ratio = analogRead(A10) / 1024.0;
+double burst_period = (1 / (double) burst_freq)*1000;          // units in microseconds
 int cycles = (int) (burst_period*1000*burst_ratio)/((1/(double)base_freq)*pow(10, 6));
 
 // Output a burst of 6 pulses at 20 kHz, 50% duty-cycle on digital pin D2
 void setup() {
-//  analogReadResolution(10); // Set analog input resolution to max, 12-bits
-//  SerialUSB.begin(115200);
-//
-  if(!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) { // Address 0x3D for 128x64
-    Serial.println(F("SSD1306 allocation failed"));
-    for(;;);
-  }
-//  delay(2000);
-  display.clearDisplay();
-  display.setTextSize(1);
-  display.setTextColor(WHITE);
-
-  display.clearDisplay();
-  display.setTextSize(1);
-  display.setTextColor(WHITE);
-//
-//  //clear display
-//  display.clearDisplay();
-
-  // display frequency
-  display.setTextSize(1);
-  display.setCursor(0,0);
-  display.print("Frequency: ");
-  display.setTextSize(2);
-  display.setCursor(0,10);
-  display.print(base_freq);
-  display.print(" ");
-  display.setTextSize(2);
-  display.print("Hz");
-//  
-  // display duty cycle
-  display.setTextSize(1);
-  display.setCursor(0, 35);
-  display.print("Duty Cycle: ");
-  display.print(" ");
-  display.setTextSize(2);
-  display.setCursor(0, 45);
-  display.print(int(duty_cycle*100));
-  display.print(" ");
-  display.setTextSize(2);
-  display.print("%");
-//  
-  display.display(); 
+  analogReadResolution(10); // Set analog input resolution to max, 12-bits
+  SerialUSB.begin(115200);
   
   GCLK->CLKCTRL.reg = GCLK_CLKCTRL_CLKEN |         // Enable GCLK0
                       GCLK_CLKCTRL_GEN_GCLK0 |     // Select GCLK0 at 48MHz
@@ -98,6 +57,66 @@ void setup() {
   
   TCC0->CTRLA.bit.ENABLE = 1;                      // Enable the TCC0 counter
   while (TCC0->SYNCBUSY.bit.ENABLE);               // Wait for synchronization 
+  OLED_display();
+}
+
+void OLED_display() {
+  if(!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) { // Address 0x3D for 128x64
+    Serial.println(F("SSD1306 allocation failed"));
+    for(;;);
+  }
+//  delay(2000);
+  display.clearDisplay();
+  display.setTextSize(1);
+  display.setTextColor(WHITE);
+
+  // display base frequency
+  display.setTextSize(1);
+  display.setCursor(0,0);
+  display.print("Base Freq");
+  display.setTextSize(2);
+  display.setCursor(0,10);
+  display.print(base_freq/1000);
+  display.print(" ");
+  display.setTextSize(1);
+  display.print("kHz");
+  
+  // display burst frequency
+  display.setTextSize(1);
+  display.setCursor(62,0);
+  display.print("Burst Freq");
+  display.setTextSize(2);
+  display.setCursor(62,10);
+  display.print(burst_freq/1000);
+  display.print(" ");
+  display.setTextSize(1);
+  display.print("kHz");
+  
+  // display duty cycle
+  display.setTextSize(1);
+  display.setCursor(0, 35);
+  display.print("Duty Cycle");
+  display.print(" ");
+  display.setTextSize(2);
+  display.setCursor(0, 45);
+  display.print(int(duty_cycle*100));
+  display.print(" ");
+  display.setTextSize(1);
+  display.print("%");
+
+  // display burst ratio
+  display.setTextSize(1);
+  display.setCursor(62, 35);
+  display.print("Burst Ratio");
+  display.print(" ");
+  display.setTextSize(2);
+  display.setCursor(62, 45);
+  display.print(int(burst_ratio*100));
+  display.print(" ");
+  display.setTextSize(1);
+  display.print("%");
+//  
+  display.display(); 
 }
 
 void loop() {
