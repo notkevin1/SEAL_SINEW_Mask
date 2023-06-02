@@ -22,8 +22,9 @@ git push -u origin main
 <!-- ![Seeeduino XIAO](https://files.seeedstudio.com/wiki/Seeeduino-XIAO/img/Seeeduino-XIAO-pinout-1.jpg) -->
 ### Wiring Diagrams/Schematic
 <!-- ![Seeeduino_OLED_schem (1)](https://user-images.githubusercontent.com/61093711/205526785-302dbbd8-a1d2-492f-8910-1b07e42a27aa.png)
-![Seeeduino_OLED_bb (1)](https://user-images.githubusercontent.com/61093711/205526779-3df1838e-d886-452e-9c88-fbf7f64f901e.png) -->
-![seeeduino_schematic](https://user-images.githubusercontent.com/61093711/217952065-acf7c9aa-363b-4d76-bf9a-c653a03f8402.png)
+![Seeeduino_OLED_bb (1)](https://user-images.githubusercontent.com/61093711/205526779-3df1838e-d886-452e-9c88-fbf7f64f901e.png) 
+![seeeduino_schematic](https://user-images.githubusercontent.com/61093711/217952065-acf7c9aa-363b-4d76-bf9a-c653a03f8402.png) -->
+![updated_schematic](https://user-images.githubusercontent.com/61093711/221732942-d0582485-4d57-4b1e-9d6b-80b3ec2cc07c.png)
 
 
 ### Example Waveform - Continuous Frequency
@@ -31,5 +32,5 @@ git push -u origin main
 ![waveform_and_device](https://user-images.githubusercontent.com/61093711/215390581-c39daa24-87d7-4491-8c49-916f191338b3.png)
 ### Example Waveform - Base Frequency @ 20 kHz (Duty Cycle = 50%), Burst Frequency = 1 kHz (Burst Ratio = 30%)
 ![scope_12](https://user-images.githubusercontent.com/61093711/219525169-de02213f-99c3-4996-a456-67aaa537dff7.png)
-<img width="842" alt="image" src="https://user-images.githubusercontent.com/61093711/218615347-129ae33b-2ccf-4818-8b12-7658cf702de7.png">
+![image](https://user-images.githubusercontent.com/61093711/224456838-71882e9f-f7f2-4fa8-850a-58d0dc470bf4.png)
 
